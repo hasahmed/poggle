@@ -1,0 +1,6 @@
+/Users/hasankatie/classes/g220/projects/poggle/.mono/temp/bin/Tools/poggle.dll
+/Users/hasankatie/classes/g220/projects/poggle/.mono/temp/bin/Tools/poggle.pdb
+/Users/hasankatie/classes/g220/projects/poggle/.mono/temp/obj/Tools/poggle.csprojResolveAssemblyReference.cache
+/Users/hasankatie/classes/g220/projects/poggle/.mono/temp/obj/Tools/poggle.csproj.CoreCompileInputs.cache
+/Users/hasankatie/classes/g220/projects/poggle/.mono/temp/obj/Tools/poggle.dll
+/Users/hasankatie/classes/g220/projects/poggle/.mono/temp/obj/Tools/poggle.pdb

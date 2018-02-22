@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://media/bamboo_canon.png" type="Texture" id=1]
+[ext_resource path="res://BambooCannon.cs" type="Script" id=2]
+
+[node name="BambooCannon" type="Sprite"]
+
+scale = Vector2( -1, -1 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="_ball_spawner" type="Node2D" parent="." index="0"]
+
+position = Vector2( 38.3434, 0.617193 )
+scale = Vector2( 0.145709, 0.169015 )
+
+
