@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Peg.cs" type="Script" id=1]
 [ext_resource path="res://media/peg_blue.png" type="Texture" id=2]
 [ext_resource path="res://media/peg_orange.png" type="Texture" id=3]
+[ext_resource path="res://media/peg_blue_w_highlight.png" type="Texture" id=4]
+[ext_resource path="res://media/peg_orange_w_highlight.png" type="Texture" id=5]
+[ext_resource path="res://media/peg_green.png" type="Texture" id=6]
+[ext_resource path="res://media/peg_green_w_highlight.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -19,11 +23,14 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 Orange = false
+Color = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="peg_blue" type="Sprite" parent="." index="1"]
 
@@ -35,5 +42,38 @@ _sections_unfolded = [ "Transform" ]
 visible = false
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="peg_blue_hl" type="Sprite" parent="." index="3"]
+
+visible = false
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="peg_orange_hl" type="Sprite" parent="." index="4"]
+
+visible = false
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="destroy_timer" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = true
+autostart = false
+
+[node name="peg_green" type="Sprite" parent="." index="6"]
+
+visible = false
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="peg_green_hl" type="Sprite" parent="." index="7"]
+
+visible = false
+texture = ExtResource( 7 )
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="timeout" from="destroy_timer" to="." method="_OnDestroyTimeout"]
 
 

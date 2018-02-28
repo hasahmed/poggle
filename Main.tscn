@@ -31,15 +31,14 @@ __meta__ = {
 [node name="PegSpawner2" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 31.0971, 219.648 )
-Rows = 20
-Columns = 20
-RowDistance = 50
-ColumnDistance = 50
+Rows = 10
+Columns = 10
+OrangePegs = 0
 
 [node name="BambooCannon" parent="." index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 454.311, 73.367 )
-_speed = 999
+_speed = 1000
 
 [node name="FPS" type="RichTextLabel" parent="." index="3"]
 

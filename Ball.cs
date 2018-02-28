@@ -17,7 +17,9 @@ public class Ball : RigidBody2D
     {
         Node2D ob = otherBody as Node2D;
         if (ob.GetName().Contains("Peg"))
-            ob.QueueFree();
+        {
+            ((Peg)ob).Collided();
+        }
     }
 
 //    public override void _Process(float delta)

@@ -14,6 +14,10 @@ config/name="poggle"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GBL="*res://Globals.cs"
+
 [display]
 
 window/size/height=768

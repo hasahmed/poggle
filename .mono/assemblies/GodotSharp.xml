@@ -3503,10 +3503,6 @@
             <summary>
             </summary>
         </member>
-        <member name="M:Godot.ArrayMesh.LightmapUnwrap(Godot.Transform,System.Single)">
-            <summary>
-            </summary>
-        </member>
         <member name="T:Godot.ARVRAnchor">
             <summary>
             The ARVR Anchor point is a spatial node that maps a real world location identified by the AR platform to a position within the game world. For example, as long as plane detection in ARKit is on, ARKit will identify and update the position of planes (tables, floors, etc) and create anchors for them.
@@ -4704,10 +4700,6 @@
             Base class for audio streams. Audio streams are used for music playback, or other types of streamed sounds that don't fit or require more flexibility than a [Sample].
             </summary>
         </member>
-        <member name="M:Godot.AudioStream.GetLength">
-            <summary>
-            </summary>
-        </member>
         <member name="T:Godot.AudioStreamOGGVorbis">
             <summary>
             OGG Vorbis audio stream driver.
@@ -4739,10 +4731,6 @@
         <member name="P:Godot.AudioStreamPlayer.VolumeDb">
             <summary>
             Volume of sound, in dB.
-            </summary>
-        </member>
-        <member name="P:Godot.AudioStreamPlayer.PitchScale">
-            <summary>
             </summary>
         </member>
         <member name="P:Godot.AudioStreamPlayer.Playing">
@@ -4798,10 +4786,6 @@
         <member name="P:Godot.AudioStreamPlayer2D.VolumeDb">
             <summary>
             Base volume without dampening.
-            </summary>
-        </member>
-        <member name="P:Godot.AudioStreamPlayer2D.PitchScale">
-            <summary>
             </summary>
         </member>
         <member name="P:Godot.AudioStreamPlayer2D.Playing">
@@ -4882,10 +4866,6 @@
         <member name="P:Godot.AudioStreamPlayer3D.MaxDb">
             <summary>
             Sets the absolute maximum of the soundlevel, in dB.
-            </summary>
-        </member>
-        <member name="P:Godot.AudioStreamPlayer3D.PitchScale">
-            <summary>
             </summary>
         </member>
         <member name="P:Godot.AudioStreamPlayer3D.Playing">
@@ -6698,8 +6678,8 @@
             For more information on Godot's UI system, anchors, margins, and containers, see the related tutorials in the manual. To build flexible UIs, you'll need a mix of UI elements that inherit from [code]Control[/code] and [Container] nodes.
             [b]User Interface nodes and input[/b]
             Godot sends input events to the scene's root node first, by calling [method Node._input]. [method Node._input] forwards the event down the node tree to the nodes under the mouse cursor, or on keyboard focus. To do so, it calls [method MainLoop._input_event]. Call [method accept_event] so no other node receives the event. Once you accepted an input, it becomes handled so [method Node._unhandled_input] will not process it.
-            Only one [code]Control[/code] node can be in keyboard focus. Only the node in focus will receive keyboard events. To get the focus, call [method grab_focus]. [code]Control[/code] nodes lose focus when another node grabs it, or if you hide the node in focus.
-            Set [member mouse_filter] to MOUSE_FILTER_IGNORE to tell a [code]Control[/code] node to ignore mouse or touch events. You'll need it if you place an icon on top of a button.
+            Only one [code]Control[/code] node can be in keyboard focus. Only the node in focus will receive keyboard events. To get the focus, call [method set_focus_mode]. [code]Control[/code] nodes lose focus when another node grabs it, or if you hide the node in focus.
+            Call [method set_ignore_mouse] to tell a [code]Control[/code] node to ignore mouse or touch events. You'll need it if you place an icon on top of a button.
             [Theme] resources change the Control's appearance. If you change the [Theme] on a [code]Control[/code] node, it affects all of its children. To override some of the theme's parameters, call one of the [code]add_*_override[/code] methods, like [method add_font_override]. You can override the theme with the inspector.
             </summary>
         </member>
@@ -9400,49 +9380,8 @@
             Return an Array containing the list of connections. A connection consists in a structure of the form {from_slot: 0, from: "GraphNode name 0", to_slot: 1, to: "GraphNode name 1" }
             </summary>
         </member>
-        <member name="M:Godot.GraphEdit.ClearConnections">
-            <summary>
-            Remove all connections between nodes.
-            </summary>
-        </member>
-        <member name="M:Godot.GraphEdit.AddValidRightDisconnectType(System.Int32)">
-            <summary>
-            Makes possible to disconnect nodes when dragging from the slot at the right if it has the specified type.
-            </summary>
-        </member>
-        <member name="M:Godot.GraphEdit.RemoveValidRightDisconnectType(System.Int32)">
-            <summary>
-            Removes the possibility to disconnect nodes when dragging from the slot at the right if it has the specified type.
-            </summary>
-        </member>
-        <member name="M:Godot.GraphEdit.AddValidLeftDisconnectType(System.Int32)">
-            <summary>
-            Makes possible to disconnect nodes when dragging from the slot at the left if it has the specified type.
-            </summary>
-        </member>
-        <member name="M:Godot.GraphEdit.RemoveValidLeftDisconnectType(System.Int32)">
-            <summary>
-            Removes the possibility to disconnect nodes when dragging from the slot at the left if it has the specified type.
-            </summary>
-        </member>
-        <member name="M:Godot.GraphEdit.AddValidConnectionType(System.Int32,System.Int32)">
-            <summary>
-            Makes possible the connection between two different slot types. The type is defined with the [method GraphNode.set_slot] method.
-            </summary>
-        </member>
-        <member name="M:Godot.GraphEdit.RemoveValidConnectionType(System.Int32,System.Int32)">
-            <summary>
-            Makes it not possible to connect between two different slot types. The type is defined with the [method GraphNode.set_slot] method.
-            </summary>
-        </member>
-        <member name="M:Godot.GraphEdit.IsValidConnectionType(System.Int32,System.Int32)">
-            <summary>
-            Returns whether it's possible to connect slots of the specified types.
-            </summary>
-        </member>
         <member name="M:Godot.GraphEdit.SetSelected(Godot.Node)">
             <summary>
-            Sets the specified [code]node[/code] as the one selected.
             </summary>
         </member>
         <member name="T:Godot.GraphNode">
@@ -9993,7 +9932,7 @@
         </member>
         <member name="M:Godot.Image.GetFormat">
             <summary>
-            Returns the image’s format. See [code]FORMAT_*[/code] constants.
+            Returns the image's raw data.
             </summary>
         </member>
         <member name="M:Godot.Image.GetData">
@@ -10906,17 +10845,10 @@
         </member>
         <member name="P:Godot.ItemList.SelectMode">
             <summary>
-            Allow single or multiple selection. See the [code]SELECT_*[/code] constants.
-            </summary>
-        </member>
-        <member name="P:Godot.ItemList.AllowReselect">
-            <summary>
-            If [code]true[/code] the currently selected item may be selected again.
             </summary>
         </member>
         <member name="P:Godot.ItemList.AllowRmbSelect">
             <summary>
-            If [code]true[/code] a right mouse button click can select items.
             </summary>
         </member>
         <member name="P:Godot.ItemList.MaxTextLines">
@@ -11166,7 +11098,7 @@
         </member>
         <member name="T:Godot.JSON">
             <summary>
-            Helper class for parsing JSON data. For usage example and other important hints, see [JSONParseResult].
+            Helper class for parsing JSON data. For usage example, see [JSONParseResult].
             </summary>
         </member>
         <member name="M:Godot.JSON.Print(System.Object,System.String,System.Boolean)">
@@ -11181,7 +11113,7 @@
         </member>
         <member name="T:Godot.JSONParseResult">
             <summary>
-            Returned by [method JSON.parse], [code]JSONParseResult[/code] contains decoded JSON or error information if JSON source not successfully parsed. You can check if JSON source was successfully parsed with [code]if json_result.error == OK[/code].
+            Returned by [method JSON.parse], [code]JSONParseResult[/code] contains decoded JSON or error information if JSON source not successfully parsed. You can check if JSON source was successfully parsed with [code]if json_result.error == 0[/code].
             </summary>
         </member>
         <member name="P:Godot.JSONParseResult.Error">
@@ -11202,12 +11134,11 @@
         <member name="P:Godot.JSONParseResult.Result">
             <summary>
             A [Variant] containing the parsed JSON. Use typeof() to check if it is what you expect. For example, if JSON source starts with curly braces ([code]{}[/code]) a [Dictionary] will be returned, if JSON source starts with braces ([code][][/code]) an [Array] will be returned.
-            [i]Be aware that the JSON specification does not define integer or float types, but only a number type. Therefore, parsing a JSON text will convert all numerical values to float types.
-            Note that JSON objects do not preserve key order like Godot dictionaries, thus you should not rely on keys being in a certain order if a dictionary is constructed from JSON. In contrast, JSON arrays retain the order of their elements:[/i]
+            [i]Be aware that the JSON specification does not define integer or float types, but only a number type. Therefore, parsing a JSON text will convert all numerical values to float types.[/i]
             [codeblock]
-            var p = JSON.parse('["hello", "world", "!"]')
-            if typeof(p.result) == TYPE_ARRAY:
-            print(p.result[0]) # prints 'hello'
+            p = JSON.parse('["hello", "world", "!"]')
+            if typeof(p) == TYPE_ARRAY:
+            print(p[0]) # prints 'hello'
             else:
             print("unexpected results")
             [/codeblock]
@@ -11247,6 +11178,28 @@
         <member name="P:Godot.KinematicBody.Collision__safeMargin">
             <summary>
             If the body is at least this close to another body, this body will consider them to be colliding.
+            </summary>
+        </member>
+        <member name="M:Godot.KinematicBody.MoveAndCollide(Godot.Vector3)">
+            <summary>
+            Moves the body along the vector [code]rel_vec[/code]. The body will stop if it collides. Returns a [KinematicCollision], which contains information about the collision.
+            </summary>
+        </member>
+        <member name="M:Godot.KinematicBody.MoveAndSlide(Godot.Vector3,System.Nullable{Godot.Vector3},System.Single,System.Int32,System.Single)">
+            <summary>
+            Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a [code]KinematicBody[/code] or [RigidBody], it will also be affected by the motion of the other body. You can use this to make moving or rotating platforms, or to make nodes push other nodes.
+            [code]linear_velocity[/code] is a value in pixels per second. Unlike in for example [method move_and_collide], you should [i]not[/i] multiply it with [code]delta[/code] — this is done by the method.
+            [code]floor_normal[/code] is the up direction, used to determine what is a wall and what is a floor or a ceiling. If set to the default value of [code]Vector3(0, 0, 0)[/code], everything is considered a wall. This is useful for topdown games.
+            If the body is standing on a slope and the horizontal speed (relative to the floor's speed) goes below [code]slope_stop_min_velocity[/code], the body will stop completely. This prevents the body from sliding down slopes when you include gravity in [code]linear_velocity[/code]. When set to lower values, the body will not be able to stand still on steep slopes.
+            If the body collides, it will change direction a maximum of [code]max_bounces[/code] times before it stops.
+            [code]floor_max_angle[/code] is the maximum angle (in radians) where a slope is still considered a floor (or a ceiling), rather than a wall. The default value equals 45 degrees.
+            Returns the movement that remained when the body stopped. To get more detailed information about collisions that occurred, use [method get_slide_collision].
+            &lt;param name="floorNormal"&gt;If the param is null, then the default value is new Vector3(0, 0, 0)&lt;/param&gt;
+            </summary>
+        </member>
+        <member name="M:Godot.KinematicBody.TestMove(Godot.Transform,Godot.Vector3)">
+            <summary>
+            Checks for collisions without moving the body. Virtually sets the node's position, scale and rotation to that of the given [Transform], then tries to move the body along the vector [code]rel_vec[/code]. Returns [code]true[/code] if a collision would occur.
             </summary>
         </member>
         <member name="M:Godot.KinematicBody.IsOnFloor">
@@ -11289,6 +11242,28 @@
         <member name="P:Godot.KinematicBody2D.Collision__safeMargin">
             <summary>
             If the body is at least this close to another body, this body will consider them to be colliding.
+            </summary>
+        </member>
+        <member name="M:Godot.KinematicBody2D.MoveAndCollide(Godot.Vector2)">
+            <summary>
+            Moves the body along the vector [code]rel_vec[/code]. The body will stop if it collides. Returns a [KinematicCollision2D], which contains information about the collision.
+            </summary>
+        </member>
+        <member name="M:Godot.KinematicBody2D.MoveAndSlide(Godot.Vector2,System.Nullable{Godot.Vector2},System.Single,System.Int32,System.Single)">
+            <summary>
+            Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately. If the other body is a [code]KinematicBody2D[/code] or [RigidBody2D], it will also be affected by the motion of the other body. You can use this to make moving or rotating platforms, or to make nodes push other nodes.
+            [code]linear_velocity[/code] is a value in pixels per second. Unlike in for example [method move_and_collide], you should [i]not[/i] multiply it with [code]delta[/code] — this is done by the method.
+            [code]floor_normal[/code] is the up direction, used to determine what is a wall and what is a floor or a ceiling. If set to the default value of [code]Vector2(0, 0)[/code], everything is considered a wall. This is useful for topdown games.
+            If the body is standing on a slope and the horizontal speed (relative to the floor's speed) goes below [code]slope_stop_min_velocity[/code], the body will stop completely. This prevents the body from sliding down slopes when you include gravity in [code]linear_velocity[/code]. When set to lower values, the body will not be able to stand still on steep slopes.
+            If the body collides, it will change direction a maximum of [code]max_bounces[/code] times before it stops.
+            [code]floor_max_angle[/code] is the maximum angle (in radians) where a slope is still considered a floor (or a ceiling), rather than a wall. The default value equals 45 degrees.
+            Returns the movement that remained when the body stopped. To get more detailed information about collisions that occurred, use [method get_slide_collision].
+            &lt;param name="floorNormal"&gt;If the param is null, then the default value is new Vector2(0, 0)&lt;/param&gt;
+            </summary>
+        </member>
+        <member name="M:Godot.KinematicBody2D.TestMove(Godot.Transform2D,Godot.Vector2)">
+            <summary>
+            Checks for collisions without moving the body. Virtually sets the node's position, scale and rotation to that of the given [Transform2D], then tries to move the body along the vector [code]rel_vec[/code]. Returns [code]true[/code] if a collision would occur.
             </summary>
         </member>
         <member name="M:Godot.KinematicBody2D.IsOnFloor">
@@ -12542,30 +12517,8 @@
             <summary>
             </summary>
         </member>
-        <member name="M:Godot.NativeScript.GetClassDocumentation">
-            <summary>
-            Returns the documentation string that was previously set with [code]godot_nativescript_set_class_documentation[/code].
-            </summary>
-        </member>
-        <member name="M:Godot.NativeScript.GetMethodDocumentation(System.String)">
-            <summary>
-            Returns the documentation string that was previously set with [code]godot_nativescript_set_method_documentation[/code].
-            </summary>
-        </member>
-        <member name="M:Godot.NativeScript.GetSignalDocumentation(System.String)">
-            <summary>
-            Returns the documentation string that was previously set with [code]godot_nativescript_set_signal_documentation[/code].
-            </summary>
-        </member>
-        <member name="M:Godot.NativeScript.GetPropertyDocumentation(System.String)">
-            <summary>
-            Returns the documentation string that was previously set with [code]godot_nativescript_set_property_documentation[/code].
-            </summary>
-        </member>
         <member name="M:Godot.NativeScript.New(System.Object[])">
             <summary>
-            Constructs a new object of the base type with a script of this type already attached.
-            [i]Note[/i]: Any arguments passed to this function will be ignored and not passed to the native constructor function. This will change with in a future API extension.
             </summary>
         </member>
         <member name="T:Godot.Navigation">
@@ -13955,25 +13908,9 @@
             xxxhdpi - 640 dpi
             </summary>
         </member>
-        <member name="M:Godot.OS.SetWindowAlwaysOnTop(System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.OS.IsWindowAlwaysOnTop">
-            <summary>
-            </summary>
-        </member>
         <member name="M:Godot.OS.RequestAttention">
             <summary>
             Request the user attention to the window. It'll flash the taskbar button on Windows or bounce the dock icon on OSX.
-            </summary>
-        </member>
-        <member name="M:Godot.OS.GetRealWindowSize">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.OS.CenterWindow">
-            <summary>
             </summary>
         </member>
         <member name="M:Godot.OS.SetImePosition(Godot.Vector2)">
@@ -14233,8 +14170,7 @@
         </member>
         <member name="M:Godot.OS.GetUniqueId">
             <summary>
-            Returns a string that is unique to the device.
-            Returns empty string on HTML5 and UWP which are not supported yet.
+            Returns a string that is unique to the device. Currently only works on Android and iOS. Returns empty string on other platforms.
             </summary>
         </member>
         <member name="M:Godot.OS.IsOkLeftAndCancelRight">
@@ -15744,6 +15680,11 @@
         <member name="M:Godot.Physics2DServer.BodySetForceIntegrationCallback(Godot.RID,Godot.Object,System.String,System.Object)">
             <summary>
             Sets the function used to calculate physics for an object, if that object allows it (see [method body_set_omit_force integration]).
+            </summary>
+        </member>
+        <member name="M:Godot.Physics2DServer.BodyTestMotion(Godot.RID,Godot.Transform2D,Godot.Vector2,System.Single,Godot.Physics2DTestMotionResult)">
+            <summary>
+            Returns whether a body can move from a given point in a given direction. Apart from the boolean return value, a [Physics2DTestMotionResult] can be passed to return additional information in.
             </summary>
         </member>
         <member name="M:Godot.Physics2DServer.BodyGetDirectState(Godot.RID)">
@@ -18293,9 +18234,10 @@
         <member name="T:Godot.RigidBody">
             <summary>
             This is the node that implements full 3D physics. This means that you do not control a RigidBody directly. Instead you can apply forces to it (gravity, impulses, etc.), and the physics simulation will calculate the resulting movement, collision, bouncing, rotating, etc.
-            A RigidBody has 4 behavior [member mode]s: Rigid, Static, Character, and Kinematic.
-            [b]Note:[/b] Don't change a RigidBody's position every frame or very often. Sporadic changes work fine, but physics runs at a different granularity (fixed hz) than usual rendering (process callback) and maybe even in a separate thread, so changing this from a process loop will yield strange behavior. If you need to directly affect the body's state, use [method _integrate_forces], which allows you to directly access the physics state.
-            If you need to override the default physics behavior, you can write a custom force integration. See [member custom_integrator].
+            This node can use custom force integration, for writing complex physics motion behavior per node.
+            This node can shift state between regular Rigid body, Kinematic, Character or Static.
+            Character mode forbids this node from being rotated.
+            As a warning, don't change RigidBody's position every frame or very often. Sporadic changes work fine, but physics runs at a different granularity (fixed hz) than usual rendering (process callback) and maybe even in a separate thread, so changing this from a process loop will yield strange behavior.
             </summary>
         </member>
         <member name="P:Godot.RigidBody.Mode">
@@ -18418,11 +18360,6 @@
             Apply a positioned impulse (which will be affected by the body mass and shape). This is the equivalent of hitting a billiard ball with a cue: a force that is applied once, and only once. Both the impulse and the position are in global coordinates, and the position is relative to the object's origin.
             </summary>
         </member>
-        <member name="M:Godot.RigidBody.ApplyTorqueImpulse(Godot.Vector3)">
-            <summary>
-            Apply a torque impulse (which will be affected by the body mass and shape). This will rotate the body around the passed in vector.
-            </summary>
-        </member>
         <member name="M:Godot.RigidBody.GetCollidingBodies">
             <summary>
             Return a list of the bodies colliding with this one. By default, number of max contacts reported is at 0 , see [method set_max_contacts_reported] to increase it.  Note that the result of this test is not immediate after moving objects. For performance, list of collisions is updated once per frame and before the physics step. Consider using signals instead.
@@ -18431,7 +18368,11 @@
         <member name="T:Godot.RigidBody2D">
             <summary>
             This node implements simulated 2D physics. You do not control a RigidBody2D directly. Instead you apply forces to it (gravity, impulses, etc.) and the physics simulation calculates the resulting movement based on its mass, friction, and other physical properties.
-            A RigidBody2D has 4 behavior [member mode]s: Rigid, Static, Character, and Kinematic.
+            A RigidBody2D has 4 behavior modes (see [member mode]):
+            - [b]Rigid[/b]: The body behaves as a physical object. It collides with other bodies and responds to forces applied to it. This is the default mode.
+            - [b]Static[/b]: The body behaves like a [StaticBody2D] and does not move.
+            - [b]Character[/b]: Similar to [code]Rigid[/code] mode, but the body can not rotate.
+            - [b]Kinematic[/b]: The body behaves like a [KinematicBody2D], and must be moved by code.
             [b]Note:[/b] You should not change a RigidBody2D's [code]position[/code] or [code]linear_velocity[/code] every frame or even very often. If you need to directly affect the body's state, use [method _integrate_forces], which allows you to directly access the physics state.
             If you need to override the default physics behavior, you can write a custom force integration. See [member custom_integrator].
             </summary>
@@ -18550,6 +18491,11 @@
         <member name="M:Godot.RigidBody2D.AddForce(Godot.Vector2,Godot.Vector2)">
             <summary>
             Adds a positioned force to the body. Both the force and the offset from the body origin are in global coordinates.
+            </summary>
+        </member>
+        <member name="M:Godot.RigidBody2D.TestMotion(Godot.Vector2,System.Single,Godot.Physics2DTestMotionResult)">
+            <summary>
+            Returns [code]true[/code] if a collision would result from moving in the given vector. [code]margin[/code] increases the size of the shapes involved in the collision detection, and [code]result[/code] is an object of type [Physics2DTestMotionResult], which contains additional information about the collision (should there be one).
             </summary>
         </member>
         <member name="M:Godot.RigidBody2D.GetCollidingBodies">
@@ -20470,11 +20416,6 @@
             SSL Stream peer. This object can be used to connect to SSL servers.
             </summary>
         </member>
-        <member name="M:Godot.StreamPeerSSL.Poll">
-            <summary>
-            Poll the connection to check for incoming bytes. Call this right before "get_available_bytes()" for it to work properly.
-            </summary>
-        </member>
         <member name="M:Godot.StreamPeerSSL.AcceptStream(Godot.StreamPeer)">
             <summary>
             </summary>
@@ -20526,12 +20467,6 @@
         <member name="M:Godot.StreamPeerTCP.DisconnectFromHost">
             <summary>
             Disconnect from host.
-            </summary>
-        </member>
-        <member name="M:Godot.StreamPeerTCP.SetNoDelay(System.Boolean)">
-            <summary>
-            Disable Nagle algorithm to improve latency for small packets.
-            Note that for applications that send large packets, or need to transfer a lot of data, this can reduce total bandwidth.
             </summary>
         </member>
         <member name="T:Godot.StreamTexture">
@@ -23153,122 +23088,98 @@
         </member>
         <member name="P:Godot.Viewport.Arvr">
             <summary>
-            If [code]true[/code] the viewport will be used in AR/VR process. Default value: [code]false[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.Size">
             <summary>
-            The width and height of viewport.
             </summary>
         </member>
         <member name="P:Godot.Viewport.OwnWorld">
             <summary>
-            If [code]true[/code] the viewport will use [World] defined in [code]world[/code] property. Default value: [code]false[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.World">
             <summary>
-            The custom [World] which can be used as 3D environment source.
             </summary>
         </member>
         <member name="P:Godot.Viewport.World2d">
             <summary>
-            The custom [World2D] which can be used as 2D environment source.
             </summary>
         </member>
         <member name="P:Godot.Viewport.TransparentBg">
             <summary>
-            If [code]true[/code] the viewport should render its background as transparent. Default value: [code]false[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.Msaa">
             <summary>
-            The multisample anti-aliasing mode. Default value: [code]MSAA_DISABLED[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.Hdr">
             <summary>
-            If [code]true[/code] the viewport rendering will receive benefits from High Dynamic Range algorithm. Default value: [code]true[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.Disable3d">
             <summary>
-            If [code]true[/code] the viewport will disable 3D rendering. For actual disabling use [code]usage[/code]. Default value: [code]false[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.Usage">
             <summary>
-            The rendering mode of viewport. Default value: [code]USAGE_3D[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.DebugDraw">
             <summary>
-            The overlay mode for test rendered geometry in debug purposes. Default value: [code]DEBUG_DRAW_DISABLED[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.RenderTargetVFlip">
             <summary>
-            If [code]true[/code] the result of rendering will be flipped vertically. Default value: [code]false[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.RenderTargetClearMode">
             <summary>
-            The clear mode when viewport used as a render target. Default value: [code]CLEAR_MODE_ALWAYS[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.RenderTargetUpdateMode">
             <summary>
-            The update mode when viewport used as a render target. Default value: [code]UPDATE_WHEN_VISIBLE[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.AudioListenerEnable2d">
             <summary>
-            If [code]true[/code] the viewport will process 2D audio streams. Default value: [code]false[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.AudioListenerEnable3d">
             <summary>
-            If [code]true[/code] the viewport will process 3D audio streams. Default value: [code]false[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.PhysicsObjectPicking">
             <summary>
-            If [code]true[/code] the objects rendered by viewport become subjects of mouse picking process. Default value: [code]false[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.GuiDisableInput">
             <summary>
-            If [code]true[/code] the viewport will not receive input event. Default value: [code]false[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.GuiSnapControlsToPixels">
             <summary>
-            If [code]true[/code] the GUI controls on the viewport will lay pixel perfectly. Default value: [code]true[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.ShadowAtlasSize">
             <summary>
-            The resolution of shadow atlas. Both width and height is equal to one value.
             </summary>
         </member>
         <member name="P:Godot.Viewport.ShadowAtlasQuad0">
             <summary>
-            The subdivision amount of first quadrant on shadow atlas. Default value: [code]SHADOW_ATLAS_QUADRANT_SUBDIV_4[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.ShadowAtlasQuad1">
             <summary>
-            The subdivision amount of second quadrant on shadow atlas. Default value: [code]SHADOW_ATLAS_QUADRANT_SUBDIV_4[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.ShadowAtlasQuad2">
             <summary>
-            The subdivision amount of third quadrant on shadow atlas. Default value: [code]SHADOW_ATLAS_QUADRANT_SUBDIV_16[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.ShadowAtlasQuad3">
             <summary>
-            The subdivision amount of fourth quadrant on shadow atlas. Default value: [code]SHADOW_ATLAS_QUADRANT_SUBDIV_64[/code].
             </summary>
         </member>
         <member name="P:Godot.Viewport.CanvasTransform">
@@ -23330,7 +23241,6 @@
         </member>
         <member name="M:Godot.Viewport.GetRenderInfo(Godot.Viewport.RenderInfo)">
             <summary>
-            Get the specific information about the viewport from rendering pipeline.
             </summary>
         </member>
         <member name="M:Godot.Viewport.GetTexture">
@@ -24384,15 +24294,6 @@
             Draws a frame. Same as [method draw].
             </summary>
         </member>
-        <member name="M:Godot.VisualServer.Sync">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.Draw(System.Boolean)">
-            <summary>
-            Draws a frame.
-            </summary>
-        </member>
         <member name="M:Godot.VisualServer.TextureCreate">
             <summary>
             Creates an empty texture.
@@ -24674,503 +24575,6 @@
             Removes all surfaces from a mesh.
             </summary>
         </member>
-        <member name="M:Godot.VisualServer.MultimeshAllocate(Godot.RID,System.Int32,Godot.VisualServer.MultimeshTransformFormat,Godot.VisualServer.MultimeshColorFormat)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.MultimeshGetInstanceCount(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.MultimeshSetMesh(Godot.RID,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.MultimeshInstanceSetTransform(Godot.RID,System.Int32,Godot.Transform)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.MultimeshInstanceSetTransform2d(Godot.RID,System.Int32,Godot.Transform2D)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.MultimeshInstanceSetColor(Godot.RID,System.Int32,Godot.Color)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.MultimeshGetMesh(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.MultimeshGetAabb(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.MultimeshInstanceGetTransform(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.MultimeshInstanceGetTransform2d(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.MultimeshInstanceGetColor(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.MultimeshSetVisibleInstances(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.MultimeshGetVisibleInstances(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ImmediateCreate">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ImmediateBegin(Godot.RID,Godot.VisualServer.PrimitiveType,Godot.RID)">
-            <summary>
-            &lt;param name="texture"&gt;If the param is null, then the default value is new RID()&lt;/param&gt;
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ImmediateVertex(Godot.RID,Godot.Vector3)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ImmediateVertex2d(Godot.RID,Godot.Vector2)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ImmediateNormal(Godot.RID,Godot.Vector3)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ImmediateTangent(Godot.RID,Godot.Plane)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ImmediateColor(Godot.RID,Godot.Color)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ImmediateUv(Godot.RID,Godot.Vector2)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ImmediateUv2(Godot.RID,Godot.Vector2)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ImmediateEnd(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ImmediateClear(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ImmediateSetMaterial(Godot.RID,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ImmediateGetMaterial(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.SkeletonCreate">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.SkeletonAllocate(Godot.RID,System.Int32,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.SkeletonGetBoneCount(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.SkeletonBoneSetTransform(Godot.RID,System.Int32,Godot.Transform)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.SkeletonBoneGetTransform(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.SkeletonBoneSetTransform2d(Godot.RID,System.Int32,Godot.Transform2D)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.SkeletonBoneGetTransform2d(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.DirectionalLightCreate">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.OmniLightCreate">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.SpotLightCreate">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightSetColor(Godot.RID,Godot.Color)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightSetParam(Godot.RID,Godot.VisualServer.LightParam,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightSetShadow(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightSetShadowColor(Godot.RID,Godot.Color)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightSetProjector(Godot.RID,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightSetNegative(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightSetCullMask(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightSetReverseCullFaceMode(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightOmniSetShadowMode(Godot.RID,Godot.VisualServer.LightOmniShadowMode)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightOmniSetShadowDetail(Godot.RID,Godot.VisualServer.LightOmniShadowDetail)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightDirectionalSetShadowMode(Godot.RID,Godot.VisualServer.LightDirectionalShadowMode)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightDirectionalSetBlendSplits(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightDirectionalSetShadowDepthRangeMode(Godot.RID,Godot.VisualServer.LightDirectionalShadowDepthRangeMode)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ReflectionProbeCreate">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ReflectionProbeSetUpdateMode(Godot.RID,Godot.VisualServer.ReflectionProbeUpdateMode)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ReflectionProbeSetIntensity(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ReflectionProbeSetInteriorAmbient(Godot.RID,Godot.Color)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ReflectionProbeSetInteriorAmbientEnergy(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ReflectionProbeSetInteriorAmbientProbeContribution(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ReflectionProbeSetMaxDistance(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ReflectionProbeSetExtents(Godot.RID,Godot.Vector3)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ReflectionProbeSetOriginOffset(Godot.RID,Godot.Vector3)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ReflectionProbeSetAsInterior(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ReflectionProbeSetEnableBoxProjection(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ReflectionProbeSetEnableShadows(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ReflectionProbeSetCullMask(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeCreate">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeSetBounds(Godot.RID,Godot.AABB)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeGetBounds(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeSetCellSize(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeGetCellSize(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeSetToCellXform(Godot.RID,Godot.Transform)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeGetToCellXform(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeSetDynamicData(Godot.RID,System.Int32[])">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeGetDynamicData(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeSetDynamicRange(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeGetDynamicRange(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeSetEnergy(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeGetEnergy(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeSetBias(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeGetBias(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeSetNormalBias(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeGetNormalBias(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeSetPropagation(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeGetPropagation(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeSetInterior(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeIsInterior(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeSetCompress(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.GiProbeIsCompressed(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightmapCaptureCreate">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightmapCaptureSetBounds(Godot.RID,Godot.AABB)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightmapCaptureGetBounds(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightmapCaptureSetOctree(Godot.RID,System.Byte[])">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightmapCaptureSetOctreeCellTransform(Godot.RID,Godot.Transform)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightmapCaptureGetOctreeCellTransform(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightmapCaptureSetOctreeCellSubdiv(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightmapCaptureGetOctreeCellSubdiv(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightmapCaptureGetOctree(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightmapCaptureSetEnergy(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.LightmapCaptureGetEnergy(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesCreate">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetEmitting(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesGetEmitting(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetAmount(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetLifetime(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetOneShot(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetPreProcessTime(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetExplosivenessRatio(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetRandomnessRatio(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetCustomAabb(Godot.RID,Godot.AABB)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetSpeedScale(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetUseLocalCoordinates(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetProcessMaterial(Godot.RID,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetFixedFps(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetFractionalDelta(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesRestart(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetDrawOrder(Godot.RID,Godot.VisualServer.ParticlesDrawOrder)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetDrawPasses(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetDrawPassMesh(Godot.RID,System.Int32,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesGetCurrentAabb(Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ParticlesSetEmissionTransform(Godot.RID,Godot.Transform)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.CameraCreate">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.CameraSetPerspective(Godot.RID,System.Single,System.Single,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.CameraSetOrthogonal(Godot.RID,System.Single,System.Single,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.CameraSetTransform(Godot.RID,Godot.Transform)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.CameraSetCullMask(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.CameraSetEnvironment(Godot.RID,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.CameraSetUseVerticalAspect(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
         <member name="M:Godot.VisualServer.ViewportCreate">
             <summary>
             Creates an empty viewport.
@@ -25320,193 +24724,6 @@
         <member name="M:Godot.VisualServer.ViewportSetDebugDraw(Godot.RID,Godot.VisualServer.ViewportDebugDraw)">
             <summary>
             Sets the debug draw mode of a viewport. See VIEWPORT_DEBUG_DRAW_* constants for options.
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentCreate">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetBackground(Godot.RID,Godot.VisualServer.EnvironmentBG)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetSky(Godot.RID,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetSkyCustomFov(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetBgColor(Godot.RID,Godot.Color)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetBgEnergy(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetCanvasMaxLayer(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetAmbientLight(Godot.RID,Godot.Color,System.Single,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetDofBlurNear(Godot.RID,System.Boolean,System.Single,System.Single,System.Single,Godot.VisualServer.EnvironmentDOFBlurQuality)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetDofBlurFar(Godot.RID,System.Boolean,System.Single,System.Single,System.Single,Godot.VisualServer.EnvironmentDOFBlurQuality)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetGlow(Godot.RID,System.Boolean,System.Int32,System.Single,System.Single,System.Single,Godot.VisualServer.EnvironmentGlowBlendMode,System.Single,System.Single,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetTonemap(Godot.RID,Godot.VisualServer.EnvironmentToneMapper,System.Single,System.Single,System.Boolean,System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetAdjustment(Godot.RID,System.Boolean,System.Single,System.Single,System.Single,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetSsr(Godot.RID,System.Boolean,System.Int32,System.Single,System.Single,System.Single,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetSsao(Godot.RID,System.Boolean,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,Godot.Color,Godot.VisualServer.EnvironmentSSAOQuality,Godot.VisualServer.EnvironmentSSAOBlur,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetFog(Godot.RID,System.Boolean,Godot.Color,Godot.Color,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetFogDepth(Godot.RID,System.Boolean,System.Single,System.Single,System.Boolean,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.EnvironmentSetFogHeight(Godot.RID,System.Boolean,System.Single,System.Single,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ScenarioCreate">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ScenarioSetDebug(Godot.RID,Godot.VisualServer.ScenarioDebugMode)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ScenarioSetEnvironment(Godot.RID,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ScenarioSetReflectionAtlasSize(Godot.RID,System.Int32,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.ScenarioSetFallbackEnvironment(Godot.RID,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceCreate2(Godot.RID,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceCreate">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceSetBase(Godot.RID,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceSetScenario(Godot.RID,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceSetLayerMask(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceSetTransform(Godot.RID,Godot.Transform)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceAttachObjectInstanceId(Godot.RID,System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceSetBlendShapeWeight(Godot.RID,System.Int32,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceSetSurfaceMaterial(Godot.RID,System.Int32,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceSetVisible(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceSetUseLightmap(Godot.RID,Godot.RID,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceSetCustomAabb(Godot.RID,Godot.AABB)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceAttachSkeleton(Godot.RID,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceSetExterior(Godot.RID,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceSetExtraVisibilityMargin(Godot.RID,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceGeometrySetFlag(Godot.RID,Godot.VisualServer.InstanceFlags,System.Boolean)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceGeometrySetCastShadowsSetting(Godot.RID,Godot.VisualServer.ShadowCastingSetting)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceGeometrySetMaterialOverride(Godot.RID,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceGeometrySetDrawRange(Godot.RID,System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstanceGeometrySetAsInstanceLod(Godot.RID,Godot.RID)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstancesCullAabb(Godot.AABB,Godot.RID)">
-            <summary>
-            &lt;param name="scenario"&gt;If the param is null, then the default value is new RID()&lt;/param&gt;
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstancesCullRay(Godot.Vector3,Godot.Vector3,Godot.RID)">
-            <summary>
-            &lt;param name="scenario"&gt;If the param is null, then the default value is new RID()&lt;/param&gt;
-            </summary>
-        </member>
-        <member name="M:Godot.VisualServer.InstancesCullConvex(System.Object[],Godot.RID)">
-            <summary>
-            &lt;param name="scenario"&gt;If the param is null, then the default value is new RID()&lt;/param&gt;
             </summary>
         </member>
         <member name="M:Godot.VisualServer.CanvasCreate">
@@ -25883,6 +25100,15 @@
             The callback method must use only 1 argument which will be called with 'userdata'.
             </summary>
         </member>
+        <member name="M:Godot.VisualServer.Draw(System.Boolean)">
+            <summary>
+            Draws a frame.
+            </summary>
+        </member>
+        <member name="M:Godot.VisualServer.Sync">
+            <summary>
+            </summary>
+        </member>
         <member name="M:Godot.VisualServer.HasChanged">
             <summary>
             Returns [code]true[/code] if changes have been made to the VisualServer's data. [method draw] is usually called if this happens.
@@ -25968,56 +25194,6 @@
         <member name="M:Godot.WeakRef.GetRef">
             <summary>
             Returns the [Object] this weakref is referring to.
-            </summary>
-        </member>
-        <member name="M:Godot.WebSocketClient.ConnectToUrl(System.String,System.String[],System.Boolean)">
-            <summary>
-            &lt;param name="protocols"&gt;If the param is null, then the default value is new string[] {}&lt;/param&gt;
-            </summary>
-        </member>
-        <member name="M:Godot.WebSocketClient.DisconnectFromHost">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.WebSocketMultiplayerPeer.GetPeer(System.Int32)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.WebSocketPeer.GetWriteMode">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.WebSocketPeer.SetWriteMode(Godot.WebSocketPeer.WriteMode)">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.WebSocketPeer.IsConnectedToHost">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.WebSocketPeer.WasStringPacket">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.WebSocketPeer.Close">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.WebSocketServer.IsListening">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.WebSocketServer.Listen(System.Int32,System.String[],System.Boolean)">
-            <summary>
-            &lt;param name="protocols"&gt;If the param is null, then the default value is new string[] {}&lt;/param&gt;
-            </summary>
-        </member>
-        <member name="M:Godot.WebSocketServer.Stop">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Godot.WebSocketServer.HasPeer(System.Int32)">
-            <summary>
             </summary>
         </member>
         <member name="T:Godot.WindowDialog">

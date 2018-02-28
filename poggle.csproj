@@ -52,6 +52,7 @@
     <Compile Include="Ball.cs" />
     <Compile Include="BambooCannon.cs" />
     <Compile Include="FPS.cs" />
+    <Compile Include="Globals.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Peg.cs" />
     <Compile Include="PegSpawner.cs" />
