@@ -11,7 +11,6 @@ public class Ball : RigidBody2D
     {
         Util.GetNode<Main>("/root/Main", this).RegisterBallEntered();
         Globals.BallInPlay = true;
-        Globals.BallsPlayed++;
         if (Globals.FireBallNextShot)
         {
             Util.GetNode<Node>("collision_shape", this).QueueFree();
@@ -37,6 +36,16 @@ public class Ball : RigidBody2D
                 Globals.FireBallNextShot = false;
             this.QueueFree();
         }
+    }
+
+    public void BallWasCaught()
+    {
+        Util.GetNode<Main>("/root/Main", this).BallsLeft++;
+        Util.GetNode<BallsLeft>("/root/Main/BallsLeft", this).UpdateLabelText();
+        Globals.BallDead();
+        if (this.IsFireBall)
+            Globals.FireBallNextShot = false;
+        this.QueueFree();
     }
 
     private void _on_BallBody_body_entered(Godot.Object otherBody)

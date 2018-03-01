@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ball.cs" />
+    <Compile Include="BallCatcher.cs" />
     <Compile Include="BallsLeft.cs" />
     <Compile Include="BambooCannon.cs" />
     <Compile Include="FBNext.cs" />

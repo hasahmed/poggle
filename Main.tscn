@@ -1,21 +1,42 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Main.cs" type="Script" id=1]
-[ext_resource path="res://media/wood_background.png" type="Texture" id=2]
-[ext_resource path="res://PegSpawner.tscn" type="PackedScene" id=3]
-[ext_resource path="res://BambooCannon.tscn" type="PackedScene" id=4]
-[ext_resource path="res://FPS.cs" type="Script" id=5]
-[ext_resource path="res://Peg.tscn" type="PackedScene" id=6]
-[ext_resource path="res://ScoreLabel.cs" type="Script" id=7]
-[ext_resource path="res://FBNext.cs" type="Script" id=8]
-[ext_resource path="res://media/you_win.png" type="Texture" id=9]
-[ext_resource path="res://media/you_lose.png" type="Texture" id=10]
-[ext_resource path="res://BallsLeft.cs" type="Script" id=11]
+[ext_resource path="res://Globals.cs" type="Script" id=2]
+[ext_resource path="res://media/wood_background.png" type="Texture" id=3]
+[ext_resource path="res://PegSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://BambooCannon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://FPS.cs" type="Script" id=6]
+[ext_resource path="res://Peg.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ScoreLabel.cs" type="Script" id=8]
+[ext_resource path="res://FBNext.cs" type="Script" id=9]
+[ext_resource path="res://media/you_win.png" type="Texture" id=10]
+[ext_resource path="res://media/you_lose.png" type="Texture" id=11]
+[ext_resource path="res://BallsLeft.cs" type="Script" id=12]
+[ext_resource path="res://BallCatcher.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10.2155, 14.6358 )
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "AnimateBallCatcher"
+length = 5.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("ball_catcher:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 120, 720 ), Vector2( 920, 720 ), Vector2( 120, 720 ) ]
+}
 
 [node name="Main" type="Node2D" index="0"]
 
@@ -26,28 +47,33 @@ __meta__ = {
 }
 BallsLeft = 5
 
-[node name="wood_background" type="Sprite" parent="." index="0"]
+[node name="Globals" type="Node2D" parent="." index="0"]
 
-texture = ExtResource( 2 )
+script = ExtResource( 2 )
+
+[node name="wood_background" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 3 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="PegSpawner2" parent="." index="1" instance=ExtResource( 3 )]
+[node name="PegSpawner2" parent="." index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 76.5938, 296.642 )
-Rows = 6
+Rows = 4
 Columns = 10
 ColumnDistance = 75
 
-[node name="BambooCannon" parent="." index="2" instance=ExtResource( 4 )]
+[node name="BambooCannon" parent="." index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 454.311, 73.367 )
 _speed = 1000
+debugShooting = false
 
-[node name="FPS" type="RichTextLabel" parent="." index="3"]
+[node name="FPS" type="RichTextLabel" parent="." index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -72,9 +98,9 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="4"]
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="5"]
 
 position = Vector2( 33.776, 31.9983 )
 input_pickable = false
@@ -91,7 +117,7 @@ position = Vector2( -19.5545, 367.092 )
 scale = Vector2( 1, 27.175 )
 shape = SubResource( 1 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." index="5"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="." index="6"]
 
 position = Vector2( 33.776, 31.9983 )
 input_pickable = false
@@ -108,7 +134,7 @@ position = Vector2( 983.059, 345.759 )
 scale = Vector2( 1, 27.175 )
 shape = SubResource( 1 )
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="." index="6"]
+[node name="StaticBody2D3" type="StaticBody2D" parent="." index="7"]
 
 position = Vector2( 33.776, 31.9983 )
 input_pickable = false
@@ -125,27 +151,27 @@ position = Vector2( 499.529, -29.3316 )
 scale = Vector2( 48.8607, 0.866223 )
 shape = SubResource( 1 )
 
-[node name="Peg" parent="." index="7" instance=ExtResource( 6 )]
+[node name="Peg" parent="." index="8" instance=ExtResource( 7 )]
 
 position = Vector2( 173.237, 475.965 )
 Color = 0
 
-[node name="Peg2" parent="." index="8" instance=ExtResource( 6 )]
+[node name="Peg2" parent="." index="9" instance=ExtResource( 7 )]
 
 position = Vector2( 825.94, 465.466 )
 Color = 0
 
-[node name="Peg3" parent="." index="9" instance=ExtResource( 6 )]
+[node name="Peg3" parent="." index="10" instance=ExtResource( 7 )]
 
 position = Vector2( 619.455, 414.72 )
 Color = 2
 
-[node name="Peg4" parent="." index="10" instance=ExtResource( 6 )]
+[node name="Peg4" parent="." index="11" instance=ExtResource( 7 )]
 
 position = Vector2( 369.223, 412.97 )
 Color = 2
 
-[node name="ScoreLabel" type="RichTextLabel" parent="." index="11"]
+[node name="ScoreLabel" type="RichTextLabel" parent="." index="12"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -172,13 +198,13 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
-[node name="Peg5" parent="." index="12" instance=ExtResource( 6 )]
+[node name="Peg5" parent="." index="13" instance=ExtResource( 7 )]
 
 position = Vector2( 62.9281, 252.779 )
 
-[node name="FBNext" type="RichTextLabel" parent="." index="13"]
+[node name="FBNext" type="RichTextLabel" parent="." index="14"]
 
 visible = false
 anchor_left = 0.0
@@ -207,7 +233,7 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Theme" ]
 
 [node name="FBNextTimer" type="Timer" parent="FBNext" index="1"]
@@ -217,19 +243,19 @@ wait_time = 2.0
 one_shot = true
 autostart = false
 
-[node name="you_win" type="Sprite" parent="." index="14"]
+[node name="you_win" type="Sprite" parent="." index="15"]
 
 visible = false
 position = Vector2( 500, 360 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
-[node name="you_lose" type="Sprite" parent="." index="15"]
+[node name="you_lose" type="Sprite" parent="." index="16"]
 
 visible = false
 position = Vector2( 510, 360 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
-[node name="BallsLeft" type="RichTextLabel" parent="." index="16"]
+[node name="BallsLeft" type="RichTextLabel" parent="." index="17"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -256,7 +282,22 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-script = ExtResource( 11 )
+script = ExtResource( 12 )
+
+[node name="ball_catcher" parent="." index="18" instance=ExtResource( 13 )]
+
+position = Vector2( 855.147, 720 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="19"]
+
+root_node = NodePath("..")
+autoplay = "AnimateBallCatcher"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/AnimateBallCatcher = SubResource( 2 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options" ]
 
 [connection signal="timeout" from="FBNext/FBNextTimer" to="FBNext" method="_OnTimeout"]
 

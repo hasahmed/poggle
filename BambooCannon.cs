@@ -5,19 +5,19 @@ public class BambooCannon : Sprite
 {
     [Export] private int _speed = 200;
     private PackedScene _ballScn;
+    [Export] private bool debugShooting = false;
 
     public override void _Ready()
     {
         _ballScn = GD.Load("res://Ball.tscn") as PackedScene;
     }
 
+    int i = 0;
 
     public override void _Input(InputEvent input)
     {
-        // GD.Print("an event");
-        if (input.IsActionPressed("drop_ball") && (!Globals.BallInPlay || true) && !Globals.GameDone)
+        if (input.IsActionPressed("drop_ball") && (!Globals.BallInPlay || debugShooting) && !Globals.GameDone)
         {
-            // GD.Print("A registerd click");
             Ball ball = _ballScn.Instance() as Ball;
             ball.Position = (this.GetNode("_ball_spawner") as Node2D).GlobalPosition;
             var distanceFromMouse = GetGlobalMousePosition() - this.Position;

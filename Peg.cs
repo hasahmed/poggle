@@ -11,7 +11,7 @@ public class Peg : StaticBody2D
 
     public override void _Ready()
     {
-        globals = GetNode("/root/Globals") as Globals;
+        globals = GetNode("/root/Main/Globals") as Globals;
         peg_sprites = Util.GetChildrenOfType<Sprite>(this);
         this.SetColor(Color);
     }

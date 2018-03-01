@@ -3,12 +3,6 @@ using System;
 
 public class Main : Node2D
 {
-//     private PackedScene _ballScn;
-
-//     public override void _Ready()
-//     {
-//         _ballScn = GD.Load("res://Ball.tscn") as PackedScene;
-//     }
     private int OrangePegsLeft = -1;
     [Export] public int BallsLeft = 5;
 
@@ -18,9 +12,9 @@ public class Main : Node2D
     {
         if (input.IsActionPressed("reset"))
         {
-            // GD.Print("time to reload the scnee");
-            // GetTree().ChangeScene("res://Main.tscn");
-            // GetTree().ReloadCurrentScene();
+            GetTree().ReloadCurrentScene();
+            Globals.Reset();
+            Globals.GameDone = false;
         }
     }
 
