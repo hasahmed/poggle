@@ -1,12 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Ball.cs" type="Script" id=1]
 [ext_resource path="res://media/ball.png" type="Texture" id=2]
+[ext_resource path="res://media/alienYellow.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 10.0
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 24.2534
 
 [node name="BallBody" type="RigidBody2D"]
 
@@ -23,18 +29,14 @@ continuous_cd = 0
 contacts_reported = 1
 contact_monitor = true
 sleeping = false
-can_sleep = true
+can_sleep = false
 linear_velocity = Vector2( 0, 0 )
 linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+[node name="collision_shape" type="CollisionShape2D" parent="." index="0"]
 
 position = Vector2( -0.00980526, 0.178859 )
 scale = Vector2( 1.43412, 1.4451 )
@@ -44,6 +46,29 @@ shape = SubResource( 1 )
 
 texture = ExtResource( 2 )
 
+[node name="fire_ball" type="Sprite" parent="." index="2"]
+
+visible = false
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Area2D" type="Area2D" parent="." index="3"]
+
+visible = false
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+shape = SubResource( 2 )
+
 [connection signal="body_entered" from="." to="." method="_on_BallBody_body_entered"]
+
+[connection signal="area_entered" from="Area2D" to="." method="_OnAreaEntered"]
 
 

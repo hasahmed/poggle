@@ -9,14 +9,83 @@ public class Main : Node2D
 //     {
 //         _ballScn = GD.Load("res://Ball.tscn") as PackedScene;
 //     }
+    private int OrangePegsLeft = -1;
+    [Export] public int BallsLeft = 5;
+
 
 
     public override void _Input(InputEvent input)
     {
         if (input.IsActionPressed("reset"))
         {
-            GetTree().ChangeScene("res://Main.tscn");
+            // GD.Print("time to reload the scnee");
+            // GetTree().ChangeScene("res://Main.tscn");
+            // GetTree().ReloadCurrentScene();
         }
+    }
+
+
+    public void RegisterOrangePegEntered()
+    {
+        if (OrangePegsLeft == -1)
+        {
+            OrangePegsLeft = 1;
+        } else
+        {
+            OrangePegsLeft++;
+        }
+    }
+    public void RegisterOrangePegExited()
+    {
+        OrangePegsLeft--;
+        if (CheckHasWon())
+            WinProcedure();
+    }
+
+    public void WinProcedure()
+    {
+        if (!Globals.GameDone)
+        {
+            Util.GetNode<Sprite>("you_win", this).Visible = true;
+            Globals.GameDone = true;
+        }
+    }
+
+    public bool CheckHasWon()
+    {
+        if (OrangePegsLeft == 0)
+            return true;
+        return false;
+    }
+
+
+
+    public void RegisterBallEntered()
+    {
+        BallsLeft--;
+        Util.GetNode<BallsLeft>("BallsLeft", this).UpdateLabelText();
+    }
+
+    public void LoseIfLost()
+    {
+        if (CheckHasLost())
+            LoseProcedure();
+    }
+
+    public void LoseProcedure()
+    {
+        if (!Globals.GameDone)
+        {
+            Util.GetNode<Sprite>("you_lose", this).Visible = true;
+            Globals.GameDone = true;
+        }
+    }
+
+    public bool CheckHasLost()
+    {
+        if (BallsLeft <= 0)
+            return true;
+        return false;
     }
 
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://PegSpawner.cs" type="Script" id=1]
-[ext_resource path="res://media/peg_blue_w_highlight.png" type="Texture" id=2]
+[ext_resource path="res://media/peg_blue.png" type="Texture" id=2]
 
 [node name="PegSpawner" type="Node2D"]
 
@@ -13,6 +13,7 @@ Rows = 3
 Columns = 4
 RowDistance = 100
 ColumnDistance = 100
+OrangePegs = 0
 
 [node name="spawner_sprite" type="Sprite" parent="." index="0"]
 

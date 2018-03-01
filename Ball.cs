@@ -3,16 +3,42 @@ using System;
 
 public class Ball : RigidBody2D
 {
-    // Member variables here, example:
-    // private int a = 2;
-    // private string b = "textvar";
+    private int KILLZ = 1000;
+    public bool IsFireBall = false;
+
 
     public override void _Ready()
     {
-        // Called every time the node is added to the scene.
-        // Initialization here
-        
+        Util.GetNode<Main>("/root/Main", this).RegisterBallEntered();
+        Globals.BallInPlay = true;
+        Globals.BallsPlayed++;
+        if (Globals.FireBallNextShot)
+        {
+            Util.GetNode<Node>("collision_shape", this).QueueFree();
+            this.IsFireBall = true;
+            Util.GetNode<Sprite>("fire_ball", this).Visible = true;
+        }
     }
+
+    private void InitilizeFireBall()
+    {
+        Util.GetNode<Node>("collision_shape", this).QueueFree();
+        this.IsFireBall = true;
+        Util.GetNode<Sprite>("fire_ball", this).Visible = true;
+    }
+
+
+    public override void _Process(float delta){
+        if (this.Position.y >= KILLZ)
+        {
+            Util.GetNode<Main>("/root/Main", this).LoseIfLost();
+            Globals.BallDead();
+            if (this.IsFireBall)
+                Globals.FireBallNextShot = false;
+            this.QueueFree();
+        }
+    }
+
     private void _on_BallBody_body_entered(Godot.Object otherBody)
     {
         Node2D ob = otherBody as Node2D;
@@ -21,11 +47,15 @@ public class Ball : RigidBody2D
             ((Peg)ob).Collided();
         }
     }
-
-//    public override void _Process(float delta)
-//    {
-//        // Called every frame. Delta is time since last frame.
-//        // Update game logic here.
-//        
-//    }
+    public void _OnAreaEntered(Godot.Object otherArea)
+    {
+        if (this.IsFireBall)
+        {
+            Node2D ob = otherArea as Node2D;
+            if (ob.GetParent().GetName().Contains("Peg"))
+            {
+                ((Peg)ob.GetParent()).Collided();
+            }
+        }
+    }
 }

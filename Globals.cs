@@ -4,15 +4,17 @@ using System.Collections.Generic;
 
 public class Globals : Node
 {
-    // Member variables here, example:
-    // private int a = 2;
-    // private string b = "textvar";
 
-    public override void _Ready()
-    {
-        // Called every time the node is added to the scene.
-        // Initialization here
-        
+    private static int SCORE_INC = 100;
+
+    public static bool BallInPlay = false;
+    public static int BallsPlayed = 0;
+    private static int Score = 0;
+    public static bool FireBallNextShot = false;
+    public static bool GameDone = false;
+
+
+    public override void _Ready() {
     }
 
 //    public override void _Process(float delta)
@@ -22,20 +24,29 @@ public class Globals : Node
 //        
 //    }
 
-    // public T[] GetChildrenOfType<T>(Node childrenOf)
-    static public T[] GetChildrenOfType<T>(Node childrenOf)
+    public static void BallDead()
     {
-        // using System;
-        // GD.Print(childrenOf.GetChildren() as T[]);
-        object[] allChildren = childrenOf.GetChildren();
-        // T[] allChildrenOfTypeT = new T[allChildren.Length];
-        List<T> allChildrenOfTypeT = new List<T>();
-        foreach (object node in allChildren)
-        {
-            if (node is T){
-                allChildrenOfTypeT.Add((T)node);
-            }
-        }
-        return allChildrenOfTypeT.ToArray();
+        Globals.BallInPlay = false;
+        Globals.BallsPlayed++;
     }
+
+    public static void Reset(){
+        BallInPlay = false;
+        BallsPlayed = 0;
+        Score = 0;
+        FireBallNextShot = false;
+    }
+
+    private static void ScoreIncrement(){
+        Score += SCORE_INC;
+    }
+    public void UpdateScore(){
+        Globals.ScoreIncrement();
+        Util.GetNode<ScoreLabel>("/root/Main/ScoreLabel", this).UpdateScore(Globals.Score);
+    }
+
+    // public T GetNode<T>(String pathToNode) where T : Node
+    // {
+    //     return GetNode(pathToNode) as T;
+    // }
 }

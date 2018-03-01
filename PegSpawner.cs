@@ -26,11 +26,6 @@ public class PegSpawner : Node2D
                 Peg peg = _pegScene.Instance() as Peg;
                 peg.Position = new Vector2(i * RowDistance, j * ColumnDistance);
                 this.AddChild(peg);
-                // if (i == greenCol)
-                // {
-                //     peg.SetAllPegsNotVisible();
-                //     peg.peg_green.Visible = true;
-                // }
             }
         }
     }

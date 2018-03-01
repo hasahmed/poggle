@@ -14,8 +14,10 @@ public class BambooCannon : Sprite
 
     public override void _Input(InputEvent input)
     {
-        if (input.IsActionPressed("drop_ball"))
+        // GD.Print("an event");
+        if (input.IsActionPressed("drop_ball") && (!Globals.BallInPlay || true) && !Globals.GameDone)
         {
+            // GD.Print("A registerd click");
             Ball ball = _ballScn.Instance() as Ball;
             ball.Position = (this.GetNode("_ball_spawner") as Node2D).GlobalPosition;
             var distanceFromMouse = GetGlobalMousePosition() - this.Position;

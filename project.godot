@@ -16,7 +16,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GBL="*res://Globals.cs"
+Util="*res://Util.cs"
+Globals="*res://Globals.cs"
 
 [display]
 

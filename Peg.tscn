@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Peg.cs" type="Script" id=1]
 [ext_resource path="res://media/peg_blue.png" type="Texture" id=2]
@@ -13,8 +13,14 @@
 custom_solver_bias = 0.0
 radius = 14.9053
 
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 14.0602
+
 [node name="Peg" type="StaticBody2D"]
 
+editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -23,14 +29,11 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
-Orange = false
 Color = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
 shape = SubResource( 1 )
-_sections_unfolded = [ "Transform" ]
 
 [node name="peg_blue" type="Sprite" parent="." index="1"]
 
@@ -73,6 +76,21 @@ _sections_unfolded = [ "Transform" ]
 visible = false
 texture = ExtResource( 7 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Area2D" type="Area2D" parent="." index="8"]
+
+visible = false
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+shape = SubResource( 2 )
 
 [connection signal="timeout" from="destroy_timer" to="." method="_OnDestroyTimeout"]
 
